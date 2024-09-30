@@ -4,8 +4,8 @@ import './App.css';
 
 function useForm(initialValues) {
   const [values, setValues] = useState(initialValues);
-  const [errors, setErrors] = useState({}); // 에러 메시지를 저장할 상태 추가
-  const [successMessages, setSuccessMessages] = useState({}); // 성공 메시지를 저장할 상태 추가
+  const [errors, setErrors] = useState({});
+  const [successMessages, setSuccessMessages] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,8 +18,8 @@ function useForm(initialValues) {
 
   const resetForm = () => {
     setValues(initialValues);
-    setErrors({}); // 폼 리셋 시 에러 메시지 초기화
-    setSuccessMessages({}); // 폼 리셋 시 성공 메시지 초기화
+    setErrors({});
+    setSuccessMessages({});
   };
 
   // 유효성 검사 함수
@@ -28,14 +28,14 @@ function useForm(initialValues) {
     let successMsg = '';
     switch (name) {
       case 'username':
-        if (value.trim() === '') {
+        if (value.trim() === '') { // 입력값이 비어있거나 공백만 있으면 메시지를 빈값으로
           errorMsg = '';
           successMsg = '';
         } else if (value.length < 2 || value.length > 20) {
           errorMsg = '이름은 2자 이상 20자 이하로 입력해야 합니다.';
           successMsg = '';
         } else {
-          successMsg = '이름이 유효합니다.';
+          successMsg = '';
         }
         break;
       case 'email':
@@ -47,7 +47,7 @@ function useForm(initialValues) {
           errorMsg = '유효한 이메일 주소를 입력하세요.';
           successMsg = '';
         } else {
-          successMsg = '이메일이 유효합니다.';
+          successMsg = '';
         }
         break;
       case 'password':
@@ -59,7 +59,7 @@ function useForm(initialValues) {
           errorMsg = '비밀번호는 최소 8자 이상, 대문자, 소문자, 숫자, 특수문자를 포함해야 합니다.';
           successMsg = '';
         } else {
-          successMsg = '비밀번호가 유효합니다.';
+          successMsg = '';
         }
         break;
       case 'date':
@@ -70,18 +70,18 @@ function useForm(initialValues) {
           errorMsg = '유효한 날짜를 입력하세요.';
           successMsg = '';
         } else {
-          successMsg = '날짜가 유효합니다.';
+          successMsg = '';
         }
         break;
       case 'number':
         if (value.trim() === '') {
           errorMsg = '';
           successMsg = '';
-        } else if (isNaN(value) || value < 1 || value > 100) { // 예시: 1부터 100 사이의 숫자
-          errorMsg = '숫자는 1과 100 사이여야 합니다.';
+        } else if (isNaN(value) || value < 1) { // 예시: 1부터 100 사이의 숫자
+          errorMsg = '나이가 유효하지 않습니다.';
           successMsg = '';
         } else {
-          successMsg = '숫자가 유효합니다.';
+          successMsg = '';
         }
         break;
       default:
@@ -120,12 +120,12 @@ function App() {
   return (
     <div className="container">
       <img src={logo} alt="홈페이지 로고" className="logo" />
-      <h2>회원가입</h2>
-      
+      <div style={{display:'flex', flexDirection:"column",justifyContent:"center", alignItems:"center",gap:"2rem",paddingBottom:"2rem"}}>
+      <h2 className='signLogo'>회원가입</h2>
       <div className="form-container">
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="username">이름 </label>
+            <label htmlFor="username">이름</label>
             <input 
               type="text" 
               id="username" 
@@ -177,7 +177,7 @@ function App() {
           </div>
 
           <div>
-            <label htmlFor="number">숫자 (1-100) </label>
+            <label htmlFor="number">나이 </label>
             <input 
               type="number" 
               id="number" 
@@ -189,8 +189,10 @@ function App() {
             {successMessages.number && <p className="success">{successMessages.number}</p>} {/* 성공 메시지 출력 */}
           </div>
 
-          <button type="submit">회원가입하기</button>
+          <button type="submit" className="submit-button">회원가입하기</button>
+
         </form>
+      </div>
       </div>
     </div>
   );

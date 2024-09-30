@@ -1,75 +1,32 @@
 :root {
   font-family: "Noto Sans KR", sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  letter-spacing: -2px;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -1.5px;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background-color: #e9e9ee;
-}
-
 .logo {
-  position: absolute;  
+  position: relative;  
   top: 0;             
-  left: 0;             
-  width: 200px;        
-  height: auto;         
-  margin: 20px;       
+  left: -85vh;             
+  width: 200px;
+  margin: 20px;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* 수평 중앙 정렬 */
-  justify-content: center; /* 수직 중앙 정렬 (필요시) */
-  height: 100vh;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(240, 240, 240);
 }
 
 .form-container {
-  background-color: #ffffff;
-  padding: 20px; /* 컨테이너의 내부 여백 */
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
   border-radius: 20px;
-  width: 700px; /* 컨테이너 너비 */
-  text-align: left; /* 텍스트를 왼쪽 정렬 */
-  margin: 400px; /* 위아래 여백 */
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-h2 {
-  position: absolute;
-  top: 20%;        
-  left: 50%;       
-  transform: translate(-50%, -50%);
-  margin: 0;
+  width: 700px;
+  text-align: left;
+  margin: 0 auto;
 }
 
 .form-container form div {
@@ -88,27 +45,36 @@ input {
   padding: 8px; /* 내부 여백 */
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; /* 테두리와 패딩 포함하여 전체 너비 계산 */
+  box-sizing: border-box;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+input[type="date"] {
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 16px;
+  color: #000000;
+}
+
+.submit-button {
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block; 
+  font-size: 18px;
+  margin: 4px 2px;
   cursor: pointer;
-  transition: border-color 0.25s;
+  border: none;
+  border-radius: 5px;
 }
-button:hover {
-  border-color: #646cff;
+
+.submit-button:hover {
+  background-color: #45a049;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+
 
 @media (prefers-color-scheme: light) {
   :root {
